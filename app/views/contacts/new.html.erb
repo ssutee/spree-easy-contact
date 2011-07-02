@@ -1,3 +1,23 @@
+<script type="text/javascript">
+//<![CDATA[
+  function check_payment() {
+    var url = '/topics/' + $("#contact_topic_id").val() + '/payment_require';
+    $.get(url, function(data) {
+      if (data) {
+        $("#order_number").show();
+        $("textarea#contact_message").val('<%= t(:payment_message) %>');
+      } else {
+        $("#order_number").hide();     
+        $("textarea#contact_message").val("");        
+      }
+    });
+  }
+  $(document).ready(function() {
+    check_payment();
+  });  
+//]]>
+</script>
+
 <% @body_id = 'contact_us' %>
 <div id="contact-us">
   <h1><%= t("contact_us") %></h1>
@@ -7,7 +27,7 @@
     <%= hook :contact_inside_form do %>
     <div class="field">
        <%= f.label :topic_id, t("topic") %>
-       <%= f.collection_select :topic_id, @topics, :id, :name %>
+       <%= f.collection_select :topic_id, @topics, :id, :name, {}, {:onchange => "check_payment();"} %>
     </div>
     <div class="field">
       <%= f.label :name, t("name") %><br />
@@ -15,11 +35,21 @@
     </div>
     <div class="field">
       <%= f.label :email, t("email") %><br />
-      <%= f.text_field :email %>
+      <% if !current_user.nil? %>
+        <%= f.text_field :email, :value => current_user.email %>
+      <% else %>
+        <%= f.text_field :email %>
+      <% end %>
     </div>
-    <div class="field">
-      <%= f.label :order_number, t("order_number") %> (<%= t("optionnal") %>)<br />
-      <%= f.text_field :order_number %>
+    <div class="field" id="order_number">
+      <%= f.label :order_number, t("order_number") %> <br />
+      <% if !current_user.nil? %>
+        <%= f.collection_select :order_number, current_user.orders.select {|order| order.payment_state != "paid"}, 
+                                :number, :number %>
+      <% else %>
+        <%= f.text_field :order_number %>
+      <% end %>
+      
     </div>
     <div class="field">
       <%= f.label :message, t("message") %><br />

@@ -1,0 +1,22 @@
+th:
+  contacts: การติดต่อ
+  contact_us: ติดต่อเรา
+  name: ชื่อ
+  email: อีเมล
+  sent: ส่ง
+  view: ดู
+  message: ข้อความ
+  order_number: หมายเลขการสั่งซื้อ
+  optionnal: ตัวเลือก
+  name_and_mail: ชื่อและอีเมล
+  contact_details: รายละเอียดการติดต่อ
+  contact_list: รายการการติดต่อ
+  send_message: ส่งข้อความ
+  message_sended: ข้อความได้ถูกส่งแล้ว
+  topics: หัวข้อทั้งหมด
+  topic: หัวข้อ
+  topics_description: "Setup topics for the contact form, choose which email should be routed to"
+  new_topic: เพิ่มหัวข้อ
+  from: ถึง
+  message_from: ข้อความจาก
+  payment_message: กรุณาป้อนวันเวลาที่โอนเงิน

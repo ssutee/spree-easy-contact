@@ -16,4 +16,10 @@
     <%= f.error_message_on :email %>
   <% end %>
 
+  <%= f.field_container :payment do %>
+    <%= f.label :payment, t("show_payment") %><br />
+    <%= f.check_box :payment  %>  
+    <%= f.error_message_on :payment %>
+  <% end %>
+
 <% end %>
