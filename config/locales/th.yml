@@ -19,4 +19,4 @@ th:
   new_topic: เพิ่มหัวข้อ
   from: ถึง
   message_from: ข้อความจาก
-  payment_message: กรุณาป้อนวันเวลาที่โอนเงิน
+  payment_message: กรุณาป้อนวันเวลาที่ได้โอนเงิน
