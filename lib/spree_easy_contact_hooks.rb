@@ -1,3 +1,4 @@
+# -*- encoding : utf-8 -*-
 class SpreeEasyContactHooks < Spree::ThemeSupport::HookListener
   # custom hooks go here
   insert_after :admin_tabs do

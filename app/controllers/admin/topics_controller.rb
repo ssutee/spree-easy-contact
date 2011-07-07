@@ -1,3 +1,4 @@
+# -*- encoding : utf-8 -*-
 class Admin::TopicsController < Admin::BaseController
   resource_controller
   

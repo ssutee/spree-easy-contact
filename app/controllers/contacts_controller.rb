@@ -1,3 +1,4 @@
+# -*- encoding : utf-8 -*-
 class ContactsController < Spree::BaseController
   before_filter :load_topics
   

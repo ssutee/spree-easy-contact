@@ -1,3 +1,4 @@
+# -*- encoding : utf-8 -*-
 class Topic < ActiveRecord::Base
   
   validates :name, :presence => true, :uniqueness => true

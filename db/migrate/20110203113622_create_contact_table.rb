@@ -1,3 +1,4 @@
+# -*- encoding : utf-8 -*-
 class CreateContactTable < ActiveRecord::Migration
   def self.up
     create_table :contacts do |t|
