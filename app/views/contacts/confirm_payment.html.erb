@@ -20,15 +20,14 @@
 
 <% @body_id = 'contact_us' %>
 <div id="contact-us">
-  <h1><%= t("contact_us") %></h1>
+  <h1><%= t("confirm_payment") %></h1>
   <%= hook :contact do %>
   <%= render "shared/error_messages", :target => @contact %>
   <%= form_for(@contact, :html => {:honeypot => true}) do |f| %>
     <%= hook :contact_inside_form do %>
-    <div class="field">
-       <%= f.label :topic_id, t("topic") %><br />
-       <%= f.collection_select :topic_id, @topics, :id, :name, {}, {} %>
-    </div>
+    
+    <%= f.hidden_field :topic_id, :value => @topics.first %>
+    
     <div class="field">
       <%= f.label :name, t("name") %><br />
       <%= f.text_field :name %>
@@ -41,9 +40,20 @@
         <%= f.text_field :email %>
       <% end %>
     </div>
+    <div class="field" id="order_number">
+      <%= f.label :order_number, t("order_number") %> <br />
+      <% orders = current_user.orders %>
+      <% if !current_user.nil? && orders.count > 0 %>
+        <%= f.collection_select :order_number, orders.select {|order| order.payment_state != "paid"}, 
+                                :number, :number %>
+      <% else %>
+        <%= f.text_field :order_number %>
+      <% end %>
+      
+    </div>
     <div class="field">
       <%= f.label :message, t("message") %><br />
-      <%= f.text_area :message %>
+      <%= f.text_area :message, :value => t(:payment_message) %>
     </div>
     <div class="action"><%= f.submit t("send_message"), :class => "button primary" %></div>
     <% end %>
