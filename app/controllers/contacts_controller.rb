@@ -28,7 +28,8 @@ class ContactsController < Spree::BaseController
     @contact = Contact.new(params[:contact] || {})
     respond_to do |format|
       if @contact.valid? &&  @contact.save
-        ContactMailer.message_email(@contact).deliver
+        #ContactMailer.message_email(@contact).deliver
+        ContactMailer.delay.message_email(@contact)
         format.html { redirect_to(root_path, :notice => t("message_sended")) }
       else
         format.html { render :action => "new" }
