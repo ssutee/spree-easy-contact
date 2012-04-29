@@ -17,7 +17,7 @@ th:
   topic: หัวข้อ
   topics_description: "Setup topics for the contact form, choose which email should be routed to"
   new_topic: เพิ่มหัวข้อ
-  from: ถึง
+  from: จาก
   message_from: ข้อความจาก
   payment_message: กรุณาป้อนวันเวลาที่ได้โอนเงิน
   

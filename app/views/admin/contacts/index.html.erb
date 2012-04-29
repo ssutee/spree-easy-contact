@@ -19,7 +19,8 @@
         <td><%= contact.name %></td>
         <td><%= contact.email %></td>
         <td><%= contact.topic.name %></td>
-        <td><%= contact.created_at %></td>
+        <td><%= I18n.localize(contact.created_at.in_time_zone(ActiveSupport::TimeZone.new("Bangkok")
+        ), :format => :long) %></td>
       <% end %>
       <td class="actions">
         <%= hook :admin_contact_index_row_actions, locals do %>
